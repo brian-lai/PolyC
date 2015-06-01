@@ -1,0 +1,742 @@
+<!DOCTYPE HTML>
+<!--
+Alpha by HTML5 UP
+html5up.net | @n33co
+Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>PolyC</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.dropotron.min.js"></script>
+		<script src="js/jquery.scrollgress.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<script src="js/jqueryCarousel.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="css/bootstrap-carousel.css" />
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-wide.css" />
+			<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+		</noscript>
+
+		<style>
+			.carousel-inner > .item > img,
+			.carousel-inner > .item > a > img {
+				width: 100%;
+				margin: auto;
+			}
+		</style>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+
+	<body class="landing">
+		<script>
+			// This is called with the results from from FB.getLoginStatus().
+			function statusChangeCallback(response) {
+				console.log('statusChangeCallback');
+				console.log(response);
+				// The response object is returned with a status field that lets the
+				// app know the current login status of the person.
+				// Full docs on the response object can be found in the documentation
+				// for FB.getLoginStatus().
+				if (response.status === 'connected') {
+					// Logged into your app and Facebook.
+					testAPI();
+				} else if (response.status === 'not_authorized') {
+					// The person is logged into Facebook, but not your app.
+					document.getElementById('status').innerHTML = 'Please log ' +
+					'into this app.';
+				} else {
+					// The person is not logged into Facebook, so we're not sure if
+					// they are logged into this app or not.
+					document.getElementById('status').innerHTML = 'Please log ' +
+					'into Facebook.';
+				}
+			}
+
+			// This function is called when someone finishes with the Login
+			// Button.  See the onlogin handler attached to it in the sample
+			// code below.
+			function checkLoginState() {
+				FB.getLoginStatus(function(response) {
+					statusChangeCallback(response);
+				});
+			}
+
+			window.fbAsyncInit = function() {
+				FB.init({
+					appId      : '375475135993706',
+					cookie     : true,  // enable cookies to allow the server to access
+					// the session
+					xfbml      : true,  // parse social plugins on this page
+					version    : 'v2.2' // use version 2.2
+				});
+
+				// Now that we've initialized the JavaScript SDK, we call
+				// FB.getLoginStatus().  This function gets the state of the
+				// person visiting this page and can return one of three states to
+				// the callback you provide.  They can be:
+				//
+				// 1. Logged into your app ('connected')
+				// 2. Logged into Facebook, but not your app ('not_authorized')
+				// 3. Not logged into Facebook and can't tell if they are logged into
+				//    your app or not.
+				//
+				// These three cases are handled in the callback function.
+
+				FB.getLoginStatus(function(response) {
+					statusChangeCallback(response);
+				});
+
+			};
+
+			// Load the SDK asynchronously
+			(function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) return;
+				js = d.createElement(s); js.id = id;
+				js.src = "//connect.facebook.net/en_US/sdk.js";
+				fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+
+			// Here we run a very simple test of the Graph API after login is
+			// successful.  See statusChangeCallback() for when this call is made.
+			function testAPI() {
+				console.log('Welcome!  Fetching your information.... ');
+				FB.api('/me', function(response) {
+					console.log('Successful login for: ' + response.name);
+					document.getElementById('status').innerHTML =
+					'Thanks for logging in, ' + response.name + '!';
+				});
+			}
+		</script>
+
+		<!-- Header -->
+		<header id="header" class="alt">
+			<!-- <h1><a href="index.html">Poltics.*</a> get the App</h1> -->
+			<nav id="nav">
+				<ul>
+					<!--script>
+					// 	var currentUser = Parse.User.current();
+					// 	if (currentUser) {
+					// 	// do stuff with the user
+					// 	} else {
+					// 	// show the signup or login page
+					// 	};
+					// </script-->
+					<!-- <li>
+						<script>
+							(function() {
+								var cx = '008220789686890023753:abyvtsfzxvm';
+								var gcse = document.createElement('script');
+								gcse.type = 'text/javascript';
+								gcse.async = true;
+								gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+								    '//cse.google.com/cse.js?cx=' + cx;
+								var s = document.getElementsByTagName('script')[0];
+								s.parentNode.insertBefore(gcse, s);
+								//alert(gcse)
+							})();
+						</script>
+						<gcse:search></gcse:search>
+					</li> -->
+					<li>
+						<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+							<script>
+								document.load(aboutUs.html);
+							</script>
+						</fb:login-button>
+					</li>
+					<li>
+						<div id="status">
+						</div>
+					</li>
+					<li><a href="index.html">Home</a></li>
+					<li>
+						<a href="" class="icon fa-angle-down">Menu</a>
+						<ul>
+							<li><a href="votingInfo.html">Voters</a></li>
+							<!-- <li><a href="elements.html"></a>elements</li> -->
+							<li>
+								<a href="">Explore</a>
+								<ul>
+									<li><a href="#president">Presidential Race</a></li>
+									<li><a href="#domestic">Domestic Policy</a></li>
+									<li><a href="#foreign">Foreign Policy</a></li>
+									<!-- <li><a href="#legislation">Legislation</a></li> -->
+									<li><a href="#top">To the Top</a></li>
+								</ul>
+							</li>
+							<li><a href="aboutUs.html">About Us</a></li>
+
+						</ul>
+					</li>
+
+					<!-- <li><a href="#" class="button">Sign Up</a></li> -->
+				</ul>
+			</nav>
+		</header>
+
+		<a name="top"></a>
+
+
+		<!-- Banner -->
+		<section id="banner">
+			<h2>PolyC</h2>
+			<p>The newsest way to interact with Politics</p>
+			<ul class="actions">
+				<!-- <li><a href="signUp.html" class="button special">Sign Up</a></li> -->
+				<!-- <li><a href="#" class="button">Learn More</a></li> -->
+			</ul>
+		</section>
+
+
+
+
+
+		<!-- Main -->
+		<section id="main" class="container">
+
+			<section class="box special">
+				<header class="major">
+					<h2>Introducing the ultimate political site
+						<br />
+						for easy access to non-partisan news
+					</h2>
+					<!-- <p>Todays Top Stories</p> -->
+				</header>
+				<!--<span class="image featured"><img src="images/pic01.jpg" alt="" /></span> -->
+
+			</section>
+
+
+
+			<a name="carousel"></a>
+			<!-- <section id="presidential-election" class="box"> -->
+			<section id="carousel">
+
+				<header class="minor">
+
+					<h3 align="center">
+						Today's Top Stories
+					</h3>
+					<!-- <br> -->
+					<!-- <p>The Latest in the US Presidential Race 2016</p> -->
+				</header>
+				<!--<span class="image featured"><img src="images/pic01.jpg" alt="" /></span> -->
+			</section>
+
+			<!-- Carousel -->
+			<div class="box">
+
+				<br>
+				<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+						<li data-target="#myCarousel" data-slide-to="1"></li>
+						<li data-target="#myCarousel" data-slide-to="2"></li>
+						<li data-target="#myCarousel" data-slide-to="3"></li>
+					</ol>
+
+					<!-- Wrapper for slides -->
+					<!-- <div class="carousel-inner" role="listbox">
+						<div class="item active">
+							<h2>
+								Bernie Sanders Announces He Is Running for President
+							</h2>
+						</div>
+						<div class="item">
+							<p>
+								Freddie Gray: Baltimore police to face criminal charges
+							</p>
+						</div>
+						<div class="item">
+							<p>
+								Federal Reserve keeps interest rates at record low
+							</p>
+						</div>
+						<div class="item">
+							<p>
+								Iran sanctions vote to test Rand Paul's 'different' foreign policy
+							</p>
+						</div>
+					</div>
+					 -->
+
+					<div class="carousel-inner" role="listbox">
+
+						<div class="item active">
+							<!-- <div class="box special">
+								<b>
+									Mike Huckabee Joins Republican Presidential Race
+								</b>
+							</div> -->
+							<a href="http://www.nytimes.com/2015/05/06/us/politics/mike-huckabee-running-in-republican-presidential-primary.html?ref=politics">
+								<img src="http://static01.nyt.com/images/2015/05/06/us/politics/06announce-huckabee-web-sub/06announce-huckabee-web-sub-superJumbo.jpg" alt="Bernie Sanders Announces He Is Running for President" width="460" height="345">
+							</a>
+
+
+						</div>
+
+
+
+						<div class="item">
+
+							<a href="http://www.wsj.com/articles/three-senators-ex-justice-press-obama-to-free-more-guantanamo-prisoners-1430857690">
+								<img src="http://si.wsj.net/public/resources/images/BN-IG575_0505gi_M_20150505164141.jpg" alt="Chania" width="460" height="345">
+							</a>
+							<div class="carousel-caption">
+								<p>
+								</p>
+							</div>
+						</div>
+
+						<div class="item">
+							<a href="http://www.economist.com/blogs/democracyinamerica/2015/05/free-speech-and-judges">
+								<img src="http://cdn.static-economist.com/sites/default/files/imagecache/full-width/images/2015/05/blogs/democracy-america/20150509_usp503.jpg" alt="Chania" width="460" height="345">
+							</a>
+
+							<div class="carousel-caption">
+								<p>
+								</p>
+							</div>
+						</div>
+
+						<div class="item">
+							<a href="http://time.com/3847333/loretta-lynch-freddie-gray/">
+								<img src="https://timedotcom.files.wordpress.com/2015/05/loretta-lynch.jpg?quality=65&strip=color&w=1100" alt="Freddie Gray: Baltimore police to face criminal charges" width="460" height="345">
+							</a>
+							<div class="carousel-caption">
+								<p>
+								</p>
+							</div>
+						</div>
+
+					</div>
+
+					<!-- Left and right controls -->
+					<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+						<span class="sr-only"></span>
+						<!-- <span class="sr-only">Previous</span> -->
+
+					</a>
+					<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+						<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+						<span class="sr-only"></span>
+						<!-- <span class="sr-only">Next</span> -->
+
+					</a>
+				</div>
+
+				<!--
+				<script>
+					$(document).ready(function(){
+						// Activate Carousel
+						$("#myCarousel").carousel();
+						// Enable Carousel Indicators
+						$(".item1").click(function(){
+							$("#myCarousel").carousel(0);
+						});
+						$(".item2").click(function(){
+							$("#myCarousel").carousel(1);
+						});
+						$(".item3").click(function(){
+							$("#myCarousel").carousel(2);
+						});
+						$(".item4").click(function(){
+							$("#myCarousel").carousel(3);
+						});
+						// Enable Carousel Controls
+						$(".left").click(function(){
+							$("#myCarousel").carousel("prev");
+						});
+						$(".right").click(function(){
+							$("#myCarousel").carousel("next");
+						});
+					});
+				</script>
+				-->
+			</div>
+
+
+			<!-- <section class="box special features">
+			<div class="features-row">
+			<section>
+			<span class="icon major fa-bolt accent2"></span>
+			<h3>Magna etiam</h3>
+			<p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
+			</section>
+			<section>
+			<span class="icon major fa-area-chart accent3"></span>
+			<h3>Ipsum dolor</h3>
+			<p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
+			</section>
+			</div>
+			<div class="features-row">
+			<section>
+			<span class="icon major fa-cloud accent4"></span>
+			<h3>Sed feugiat</h3>
+			<p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
+			</section>
+			<section>
+			<span class="icon major fa-lock accent5"></span>
+			<h3>Enim phasellus</h3>
+			<p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
+			</section>
+			</div>
+			</section> -->
+
+
+
+
+
+			<!-- <a name="president"></a> -->
+
+			<!-- <section id="presidential-election" class="box"> -->
+			<div id="presidential-election">
+
+				<header>
+
+					<h3>
+						Presidential Election 2016
+					</h3>
+					<!-- <br> -->
+					<p>The Latest in the US Presidential Race 2016</p>
+				</header>
+			</div>
+
+
+			<div class="row">
+				<div class="6u 12u(narrower)">
+
+					<section class="box special">
+						<span class="image featured">
+							<a href="http://www.nytimes.com/2015/05/06/us/politics/mike-huckabee-running-in-republican-presidential-primary.html?ref=politics">
+								<img src="http://static01.nyt.com/images/2015/05/06/us/politics/06ANNOUNCE-HUCKABEE-web/06ANNOUNCE-HUCKABEE-web-master675.jpg" alt="" />
+							</a>
+						</span>
+						<h3>
+							Mike Huckabee to Join Republican Presidential Race
+						</h3>
+						<br>
+						<p>
+							HOPE, Ark. — Mike Huckabee, who excited evangelical voters in his first presidential race in 2008 and retains much of their good will, plans to announce Tuesday that he will again seek the Republican nomination, despite a crowded field of rivals for his natural base in the party.						</p>
+						<ul class="actions">
+							<li><a href="http://www.nytimes.com/2015/05/06/us/politics/mike-huckabee-running-in-republican-presidential-primary.html?ref=politics" class="button alt">Read More</a></li>
+						</ul>
+					</section>
+
+				</div>
+
+
+
+				<div class="6u 12u(narrower)">
+
+					<section class="box special">
+
+						<span class="image featured">
+							<a href="http://www.wsj.com/articles/clintons-negatives-rise-in-wsj-poll-but-democrats-stay-the-course-1430778624">
+								<img src="http://si.wsj.net/public/resources/images/BN-IG006_POLL05_P_20150504175243.jpg" width = "100" height="" alt="" />
+							</a>
+						</span>
+						<h3>
+							Hillary Clinton Takes Hit in WSJ Poll, but Holds Edge Over GOP Rivals
+						</h3>
+						<br>
+						<p>
+							Hillary Clinton’s stature has been battered after more than a month of controversy over her fundraising and email practices, but support for her among Democrats remains strong and unshaken, a new Wall Street Journal/NBC News poll finds.
+						</p>
+						<ul class="actions">
+							<li>
+								<a href="http://www.wsj.com/articles/clintons-negatives-rise-in-wsj-poll-but-democrats-stay-the-course-1430778624" class="button alt">Read More</a>
+							</li>
+						</ul>
+					</section>
+				</div>
+			</div>
+
+
+
+			<div class="row">
+				<div class="6u 12u(narrower)">
+
+					<section class="box special">
+						<span class="image featured">
+							<a href="http://time.com/3845535/ben-carson-the-gops-accidental-candidate-for-president/">
+								<img src="https://timedotcom.files.wordpress.com/2015/05/ben-carson-2.jpg?quality=65&strip=color&w=1100" width = "100" height="" alt="" />
+							</a>
+						</span>
+						<h3>
+							Ben Carson: The GOP’s Accidental Candidate for President						</h3>
+						<br>
+						<p>
+							“I’m not a politician,” Ben Carson said as he launched his bid for President of the United States. “I don’t want to be a politician.”
+
+							Carson’s campaign rollout was laced with such unconventional moments. There was the unusual announcement video. The gospel choir’s cover of Eminem’s “Lose Yourself.” The doctor’s grave diagnosis of the nation’s maladies.
+
+						</p>
+						<ul class="actions">
+							<li><a href="http://time.com/3845535/ben-carson-the-gops-accidental-candidate-for-president/" class="button alt">Read More</a></li>
+						</ul>
+					</section>
+				</div>
+
+
+
+				<div class="6u 12u(narrower)">
+
+					<section class="box special">
+
+						<span class="image featured">
+							<a href="http://www.chicagotribune.com/news/nationworld/politics/la-pn-fiorina-carson-presidential-campaign-20150501-story.html">
+								<img src="http://www.trbimg.com/img-55464ec8/turbine/la-na-carly-fiorina-ben-carson-20150503/600/600x338" width = "100" height="" alt="" />
+							</a>
+						</span>
+						<h3>
+							Carly Fiorina, Ben Carson add breadth to Republican presidential field						</h3>
+						<br>
+						<p>
+
+							With the additions of Carly Fiorina and Ben Carson on Monday to the growing list of Republican presidential hopefuls, the GOP diversified its slate of candidates as it tries to promote an image of inclusion to appeal to a broader group of voters.
+						</p>
+						<ul class="actions">
+							<li>
+								<a href="http://www.chicagotribune.com/news/nationworld/politics/la-pn-fiorina-carson-presidential-campaign-20150501-story.html" class="button alt">Read More</a>
+							</li>
+
+						</ul>
+					</section>
+				</div>
+			</div>
+
+
+
+
+			<a name="domestic"></a>
+
+			<div id="domestic-policy">
+				<header>
+					<h3>
+						At Home
+					</h3>
+					<!-- <br> -->
+					<p>The policies that affect us at home</p>
+				</header>
+				<!--<span class="image featured"><img src="images/pic01.jpg" alt="" /></span> -->
+			</div>
+
+
+
+
+			<div class="row">
+				<div class="6u 12u(narrower)">
+
+					<section class="box special">
+
+						<span class="image featured">
+							<a href="http://www.chicagotribune.com/la-pn-hillary-clinton-immigration-nevada-20150505-story.html">
+								<img src="http://www.trbimg.com/img-5548bda1/turbine/la-pn-hillary-clinton-immigration-nevada-20150-001/750/750x422" style="height:50%;width:100%;" alt="" />
+							</a>
+						</span>
+						<h3>
+							Hillary Rodham Clinton to call for path to citizenship for immigrants
+						</h3>
+						<br>
+						<p>
+							During a campaign visit to Nevada today, Hillary Rodham Clinton will call for a “full and equal path to citizenship” for immigrants living in the country illegally, drawing a clear distinction from Republican candidates on the issue, a campaign official said.
+						</p>
+						<ul class="actions">
+							<li><a href="http://www.chicagotribune.com/la-pn-hillary-clinton-immigration-nevada-20150505-story.html" class="button alt">Read More</a></li>
+						</ul>
+					</section>
+				</div>
+
+
+
+				<div class="6u 12u(narrower)">
+
+					<section class="box special">
+
+						<span class="image featured">
+							<a href="http://www.chicagotribune.com/news/nationworld/politics/la-pn-omalley-baltimore-20150503-story.html">
+								<img src="http://www.trbimg.com/img-554646a1/turbine/la-pn-omalley-baltimore-20150503-001/600/600x338" style="height:50%;width:100%;" alt="" />
+							</a>
+						</span>
+						<h3>
+							Martin O'Malley defends his Baltimore record, calls for 'agenda for American cities'
+						</h3>
+						<br>
+						<p>
+
+							Former Maryland Gov. Martin O'Malley said Sunday that recent unrest in Baltimore that has brought new scrutiny of policing policies he championed as the city's mayor would not deter him from a possible presidential run, saying events have shown the need for "an agenda for American cities" he would champion.
+						</p>
+						<ul class="actions">
+							<li><a href="http://www.chicagotribune.com/news/nationworld/politics/la-pn-omalley-baltimore-20150503-story.html" class="button alt">Read More</a></li>
+						</ul>
+					</section>
+				</div>
+			</div>
+
+
+
+			<div class="row">
+				<div class="6u 12u(narrower)">
+
+					<section class="box special">
+
+						<span class="image featured">
+							<a href="http://www.wsj.com/articles/michigan-voters-head-to-polls-over-sales-tax-increase-for-roads-bridges-1430841393">
+								<img src="http://si.wsj.net/public/resources/images/BN-IE614_DXSCHO_M_20150430173034.jpg" style="height:50%;width:100%;" alt="" />
+							</a>
+						</span>
+						<h3>
+							Michigan Voters Head to Polls Over Sales Tax Increase for Roads, Bridges
+						</h3>
+						<br>
+						<p>
+							Michigan voters will have an unusually direct say Tuesday over whether to pay more to improve roads, making the state the latest to explore raising taxes to shore up crumbling infrastructure.
+						</p>
+						<ul class="actions">
+							<li><a href="http://www.wsj.com/articles/michigan-voters-head-to-polls-over-sales-tax-increase-for-roads-bridges-1430841393" class="button alt">Read More</a></li>
+						</ul>
+					</section>
+				</div>
+
+
+
+				<div class="6u 12u(narrower)">
+
+					<section class="box special">
+
+						<span class="image featured">
+							<a href="http://www.economist.com/blogs/democracyinamerica/2015/05/same-sex-marriage">
+								<img src="http://cdn.static-economist.com/sites/default/files/imagecache/full-width/images/2015/05/blogs/democracy-america/20150502_usp506.jpg" style="height:50%;width:100%;" alt="" />
+							</a>
+						</span>
+						<h3>
+							A liberal idea
+
+						</h3>
+						<br>
+						<p>
+							GAY marriage is illegal in Georgia, and only spouses can adopt a child jointly. This was a problem for Elizabeth Wurz, whose son recently fell ill. Because her female partner is the boy's only mother recognised on paper, Ms Wurz found herself struggling to convince paramedics that she, too, was a legal guardian. “People don’t realise the fear you feel at a time like that,” she says.
+						</p>
+						<ul class="actions">
+							<li><a href="http://www.economist.com/blogs/democracyinamerica/2015/05/same-sex-marriage" class="button alt">Read More</a></li>
+						</ul>
+					</section>
+				</div>
+			</div>
+
+
+
+
+
+
+			<a name="foreign"></a>
+
+			<!-- <div id="foreign-policy" class="box"> -->
+			<div id="foreign-policy">
+				<header class="minor">
+					<h3>
+						Abroad
+					</h3>
+					<!-- <br> -->
+					<p>Everything From the War in the Middle East to Immigration Policy</p>
+				</header>
+				<!--<span class="image featured"><img src="images/pic01.jpg" alt="" /></span> -->
+			</div>
+
+
+
+
+			<div class="row">
+				<div class="6u 12u(narrower)">
+
+					<section class="box special">
+
+						<span class="image featured">
+							<a href="http://www.bbc.com/news/world-africa-32589556">
+								<img src="http://ichef.bbci.co.uk/news/660/media/images/82770000/jpg/_82770352_johnkerryap.jpg" style="height:50%;width:100%;" alt="" />
+							</a>
+						</span>
+						<h3>
+							John Kerry visits Somali capital Mogadishu
+						</h3>
+						<br>
+						<p>
+							He is the first American Secretary of State to visit the city.
+							In a meeting with Somalia's president under tight security at the airport, he said: "Next time I come, we have to be able to just walk downtown".
+							The US backs the Somali government in its fight against Islamist militant group al-Shabab, which still controls many rural parts of southern Somalia.						</p>
+						<ul class="actions">
+							<li><a href="http://www.bbc.com/news/world-africa-32589556" class="button alt">Read More</a></li>
+						</ul>
+					</section>
+				</div>
+
+
+
+				<div class="6u 12u(narrower)">
+					<section class="box special">
+						<span class="image featured">
+							<a href="http://www.theguardian.com/world/2015/may/05/isis-claims-responsibility-for-texas-atttack">
+								<img src="http://i.guim.co.uk/static/w-620/h--/q-95/sys-images/Guardian/Pix/pictures/2015/5/5/1430823458594/1c2fc108-9634-4bdc-829f-86b686f0dfbc-620x372.jpeg" style="height:50%;width:100%;" alt="" />
+							</a>
+						</span>
+						<h3>
+							Isis claims responsibility for Texas attack
+						</h3>
+						<br>
+
+						<p>
+							The Islamic State group proclaimed early on Tuesday that it had carried out its first terrorist attack on American soil and warned of “bigger and more bitter” strikes to come as it took responsibility for the failed assault on an art contest featuring cartoons of the Prophet Muhammad held in Texas at the weekend.
+						</p>
+						<ul class="actions">
+							<li><a href="http://www.theguardian.com/world/2015/may/05/isis-claims-responsibility-for-texas-atttack" class="button alt">Read More</a></li>
+						</ul>
+					</section>
+				</div>
+			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+		</section>
+
+
+		<!-- Footer -->
+		<footer id="footer">
+			<!-- <ul class="icons">
+				<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+				<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+				<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
+				<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+				<li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
+			</ul> -->
+			<ul class="copyright">
+				<li>&copy; PolyC. All rights reserved.</li><li>Design: <a href="aboutUs.html">PolyC Team</a></li>
+			</ul>
+		</footer>
+
+	</body>
+</html>
