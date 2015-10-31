@@ -1,7 +1,6 @@
 import urllib2
 from bs4 import BeautifulSoup
 from cookielib import CookieJar
-import sys
 import requests
 import json
 #from guardianapi import Client
