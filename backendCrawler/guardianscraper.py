@@ -43,7 +43,8 @@ def get_content():
             paragraph = str(paragraph)
             allparagraphs += paragraph
         paragraphs_for_all_articles.append(allparagraphs)
-    print paragraphs_for_all_articles
+    # print paragraphs_for_all_articles
     return data
 
-get_content()
+if __name__ == "__main__":
+    get_content()
